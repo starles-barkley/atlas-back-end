@@ -21,4 +21,12 @@ if __name__ == '__main__':
     file = open(file_name, 'w')
     csv_file = csv.writer(file, quoting=csv.QUOTE_ALL)
     count = 0
-    
+
+    for todo in todos:
+
+        csv_file.writerow([
+            employee['id'],
+            employee['username'],
+            todo['completed'],
+            todo['title']])
+    file.close()
