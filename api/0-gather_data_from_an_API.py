@@ -7,7 +7,7 @@ import sys
 
 if __name__ == '__main__':
 
-    def retreive_tasks(employee_id)
+    def retreive_tasks(employee_id):
 
         site_url = "https://jsonplaceholder.typicode.com/"
         employee_url = f"{site_url}/users/{employee_id}"
