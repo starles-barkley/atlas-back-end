@@ -9,9 +9,8 @@ import sys
 if __name__ == '__main__':
 
     base_url = 'https://jsonplaceholder.typicode.com/'
-    user_ext = '/users/{}'.format(sys.argv[1])
+    user_ext = '/users/'
     todo_ext = '/todos'
-    
 
     employees_dict = {}
     employee_response = requests.get(base_url+user_ext)
