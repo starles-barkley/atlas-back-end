@@ -2,6 +2,7 @@
 
 ''' Module for retrieving API data'''
 
+import json
 import requests
 import sys
 
@@ -10,11 +11,12 @@ if __name__ == '__main__':
     base_url = 'https://jsonplaceholder.typicode.com/'
     user_ext = '/users/{}'.format(sys.argv[1])
     todo_ext = '/todos'
+    
 
     employees_dict = {}
     employee_response = requests.get(base_url+user_ext)
     employees = employee_response.json()
-    
+
     for employee in employees:
         json_key = "{}".format(employee['id'])
         employee_json = {json_key: []}
