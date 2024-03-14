@@ -17,3 +17,15 @@ if __name__ == '__main__':
     employee = employee_response.json()
     todo_response = requests.get(base_url+user_ext+todo_ext)
     todos = todo_response.json()
+
+    j_key = "{}".format(employee['id'])
+    employee_json = {j_key: []}
+    for todo in todos:
+        task_dict = {
+            "task": todo['title'],
+            "completed": todo['completed'],
+            "username": employee['username']}
+        employee_json[j_key].append(task_dict)
+
+        with open(file_name, 'w') as file:
+            file.write(json.dumps(employee_json))
