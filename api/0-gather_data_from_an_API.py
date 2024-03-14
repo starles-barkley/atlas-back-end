@@ -6,7 +6,7 @@ import requests
 import sys
 
 if __name__ == '__main__':
-    
+
     base_url = 'https://jsonplaceholder.typicode.com/'
     user_ext = '/users/{}'.format(sys.argv[1])
     todo_ext = '/todos'
