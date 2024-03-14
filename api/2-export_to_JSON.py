@@ -25,7 +25,7 @@ if __name__ == '__main__':
             "task": todo['title'],
             "completed": todo['completed'],
             "username": employee['username']}
-        employee_json[j_key].append(task_dict)
+        employee_json[json_key].append(task_dict)
 
         with open(file_name, 'w') as file:
             file.write(json.dumps(employee_json))
