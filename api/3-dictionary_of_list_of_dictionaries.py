@@ -11,20 +11,22 @@ if __name__ == '__main__':
     user_ext = '/users/{}'.format(sys.argv[1])
     todo_ext = '/todos'
 
+    employees_dict = {}
     employee_response = requests.get(base_url+user_ext)
-    employee = employee_response.json()
-    todo_response = requests.get(base_url+user_ext+todo_ext)
-    todos = todo_response.json()
-    completed = 0
-    total = 0
-    for todo in todos:
-        total += 1
-        if todo['completed'] is True:
-            completed += 1
+    employees = employee_response.json()
+    
+    for employee in employees:
+        json_key = "{}".format(employee['id'])
+        employee_json = {json_key: []}
+        todo_response = requests.get(base_url+user_ext+json_key+todo_ext)
+        todos = todo_response.json()
+        for todo in todos:
+            task_dict = {
+                "username": employee['username'],
+                "task": todo['title'],
+                "completed": todo['completed']}
+            employee_json[json_key].append(task_dict)
+        employees_dict.update(employee_json)
 
-    print("Employee {0} is done with tasks({1}/{2}):".format(
-        employee['name'], completed, total
-        ))
-    for todo in todos:
-        if todo['completed'] is True:
-            print("\t {}".format(todo['title']))
+    with open('todo_all_employees.json', 'w') as file:
+        file.write(json.dumps(employees_dict))
