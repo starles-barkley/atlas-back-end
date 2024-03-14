@@ -7,10 +7,10 @@ import sys
 
 if __name__ == '__main__':
     
-    def todolist(employee_id):
-        base_url = 'https://jsonplaceholder.typicode.com/'
-        user_ext = '/users/{}'.format(sys.argv[1])
-        todo_ext = '/todos'
+
+    base_url = 'https://jsonplaceholder.typicode.com/'
+    user_ext = '/users/{}'.format(sys.argv[1])
+    todo_ext = '/todos'
 
         employee_response = requests.get(base_url+user_ext)
         employee = employee_response.json()
